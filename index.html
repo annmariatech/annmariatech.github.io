@@ -1,126 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Ann Maria | Portfolio</title>
+<meta charset="UTF-8">
+<title>Ann Maria</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #f7f7f9;
-      color: #1f2933;
-      line-height: 1.6;
-    }
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
 
-    .container {
-      max-width: 800px;
-      margin: auto;
-      padding: 60px 20px;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-
-    .subtitle {
-      color: #6b7280;
-      margin-bottom: 40px;
-    }
-
-    h2 {
-      margin-top: 50px;
-      margin-bottom: 20px;
-      font-size: 1.4rem;
-    }
-
-    .card {
-      background: white;
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    }
-
-    a {
-      color: #6366f1;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .skills li {
-      display: inline-block;
-      background: #eef2ff;
-      color: #3730a3;
-      padding: 8px 14px;
-      border-radius: 999px;
-      margin: 6px 6px 0 0;
-      font-size: 0.9rem;
-    }
-
-    footer {
-      margin-top: 60px;
-      color: #6b7280;
-      font-size: 0.9rem;
-    }
-  </style>
 </head>
 
 <body>
-  <div class="container">
 
-    <h1>Hi, I'm Ann Maria 👋</h1>
-    <p class="subtitle">
-      First-year IT student exploring Python, DSA, and building small but cool things.
-    </p>
+<nav class="navbar">
 
-    <h2>Projects</h2>
+<span class="path">~/annmaria</span>
 
-    <div class="card">
-      <h3>Select & Speak – Chrome Extension</h3>
-      <p>
-        A Chrome extension that reads selected text aloud using the browser’s TTS API.
-      </p>
-      <a href="https://github.com/annmariatech/select-and-speak">
-        View on GitHub →
-      </a>
-    </div>
+<a href="#">about.json</a>
+<a href="#">projects.log</a>
 
-    <h2>Skills</h2>
-    <ul class="skills">
-      <li>Python</li>
-      <li>Basic DSA</li>
-      <li>HTML</li>
-      <li>JavaScript</li>
-    </ul>
 
-    <h2>Contact</h2>
-    <div class="card">
-      <p>
-        GitHub: 
-        <a href="https://github.com/annmariatech">
-          @annmariatech
-        </a>
-      </p>
-    </div>
+</nav>
 
-    <footer>
-      built with caffeine + curiosity ☕
-    </footer>
+<div class="terminal">
 
-  </div>
+<p class="command typing">$ boot portfolio</p>
+
+<h1 class="title">&lt;annmaria.dev&gt;</h1>
+
+<p class="comment">// building things and breaking them</p>
+
+<div class="box">
+
+<p class="command">&gt; about.json</p>
+
+<pre>
+{
+  "role": "IT student",
+  "university": "CUSAT",
+  "interests": ["AI", "Web", "Creative Coding"]
+}
+</pre>
+
+</div>
+
+<div class="box">
+
+<p class="command">&gt; projects.log</p>
+
+<pre>
+1. <a href="https://github.com/annmariatech/greenline" target="_blank">
+Greenline - AI Aware Carbon Middleware 
+</a>
+2. <a href="https://github.com/annmariatech/select-and-speak" target="_blank">
+Select and Speak - TTS Chrome Extension
+</a>
+</pre>
+</div>
+<div id="contact" class="box">
+
+<p class="command">&gt; contact.sh</p>
+
+<pre>
+# reach_out
+
+github   : <a href="https://github.com/annmariatech" target="_blank">github.com/annmariatech</a>
+
+linkedin : <a href="https://linkedin.com/in/annmariatech" target="_blank">linkedin.com/in/annmariatech</a>
+
+email    : hey.annmaria@gmail.com
+</pre>
+
+
+
+
+</div>
 </body>
 </html>
