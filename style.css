@@ -8,15 +8,7 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 .profile-footer{position:relative;width:100vw;margin:28px 0 0 calc(50% - 50vw);overflow:hidden;border-top:1px solid #e6dcef;border-radius:18px 18px 0 0;background:linear-gradient(125deg,#faf6ff,#fff8fb 52%,#f1f7ff);color:#413951}
 .footer-inner{width:min(100% - 40px,1120px);margin:0 auto}
-.profile-footer .footer-signoff{padding:26px 0 12px}
-.profile-footer .footer-signoff h2{margin:0;font-size:clamp(1.4rem,3.7vw,2.3rem);font-weight:500;letter-spacing:-.065em}
-.profile-footer .footer-signoff h2 span{color:#9f7fc9}
-.profile-footer .footer-signoff>p:last-child{margin:8px 0 0;color:#80778e;font-size:.7rem}
-.profile-footer .dot-art{position:relative;height:clamp(115px,17vw,190px);margin-top:5px;overflow:hidden}
-.profile-footer .dot-art svg{display:block;width:100%;height:100%;overflow:visible}
-.profile-footer .dot-art text{font-family:var(--mono);font-size:100px;font-weight:700;letter-spacing:1px;opacity:.85}
-.dot-art-spark{position:absolute;color:#a38ac6;font-size:1.2rem}
-.spark-a{left:5%;top:24%}.spark-b{right:10%;top:10%;color:#d797b4}.spark-c{right:3%;bottom:22%;color:#829ed1}
+.profile-footer .dot-art{position:relative;height:clamp(220px,27vw,350px);margin:0 0 4px calc(50% - 50vw);overflow:hidden;width:100vw}
 .profile-footer .footer-bottom{display:flex;justify-content:space-between;gap:15px;margin-top:4px;padding:13px 0 17px;border-top:1px solid #e6deec;color:#91889d;font-size:.6rem}
 .profile-footer .footer-bottom div{display:flex;gap:18px;flex-wrap:wrap}
 .profile-footer .footer-bottom a{color:#796c8d;text-decoration:none}.profile-footer .footer-bottom a:hover{color:#735bc0}
@@ -26,7 +18,14 @@
 .github-profile-link{display:grid;width:34px;height:34px;place-items:center;border:1px solid #e2d8ee;border-radius:9px;background:#fff;color:#765eaa;text-decoration:none}
 .github-section .contribution-chart{width:100%;max-width:960px;padding:19px 20px;border:1px solid #e5dcec;border-radius:14px;background:linear-gradient(120deg,#fff,#fcf9ff 60%,#f7fbff);box-shadow:0 10px 28px #59467c0e}
 .github-section .contribution-chart img{display:block;width:100%;min-width:0;max-width:100%;height:auto;object-fit:contain}
-@media(max-width:760px){.profile-footer .dot-art text{font-size:88px}}
-@media(max-width:520px){.footer-inner{width:min(100% - 30px,1120px)}.profile-footer .dot-art{height:105px}.profile-footer .dot-art text{font-size:75px}.profile-footer .footer-bottom{flex-direction:column}.profile-footer .footer-bottom div{gap:14px}.github-section{padding-top:0}.github-section .section-heading{margin-bottom:17px}.github-section .contribution-chart{padding:12px 9px}.profile-footer .footer-signoff{padding-top:22px}}
+@media(max-width:520px){.footer-inner{width:min(100% - 30px,1120px)}.profile-footer .footer-bottom{flex-direction:column}.profile-footer .footer-bottom div{gap:14px}.github-section{padding-top:0}.github-section .section-heading{margin-bottom:17px}.github-section .contribution-chart{padding:12px 9px}}
+
+.dot-art-canvas{display:block;width:100%;height:100%}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.resume-note{color:#786c8d;text-decoration:none;transition:border-color .18s ease,background .18s ease}
+.resume-note:hover{border-color:#bca9de;background:#fcf9ff;color:#604a91}
+.resume-note:focus-visible{outline:3px solid #ac91ec;outline-offset:3px}
+.resume-note>span strong{font-size:.7rem;font-weight:500}
+@media(max-width:520px){.profile-footer .dot-art{height:210px}.profile-footer .footer-inner{width:100%}.profile-footer .footer-bottom{width:calc(100% - 30px);margin-inline:auto}}
 
 .cat-message:empty{display:none}
