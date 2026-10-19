@@ -49,12 +49,64 @@
     .nav-links a { font: 0.78rem var(--mono); color: var(--muted); text-decoration: none; }
     .nav-links a:hover { color: var(--purple); }
 
-    .hero { padding: clamp(48px, 9vw, 100px) 0 72px; }
+    .hero { padding: clamp(36px, 6vw, 64px) 0 72px; }
+    .desktop-frame {
+      overflow: hidden;
+      padding: 10px;
+      border: 2px solid #df83bd;
+      border-radius: 13px;
+      background: linear-gradient(135deg, #f6a9d4, #e7b9f5 54%, #c9b9ff);
+      box-shadow: 0 20px 50px rgba(108, 54, 118, .16), inset 0 1px 0 rgba(255,255,255,.7);
+    }
+    .os-bar {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      min-height: 38px; padding: 5px 12px; border: 1px solid #e5a2cc;
+      background: linear-gradient(#ffe6f4, #f8c5e1); color: #352746;
+      font: 500 .7rem var(--mono); box-shadow: inset 0 1px #fff9;
+    }
+    .os-brand { color: #7255c8; }
+    .os-menus { display: flex; gap: 18px; }
+    .os-menus span { text-decoration: underline; text-decoration-color: #b57ca6; text-underline-offset: 3px; }
+    .os-clock { color: #645372; }
+    .desktop-workspace {
+      min-height: 360px; padding: 20px;
+      background: linear-gradient(145deg, #f4d9fb, #f7d8ed 53%, #dfd6ff);
+      border: 1px solid rgba(255,255,255,.72); border-top: 0;
+    }
+    .desktop-shortcuts { display: flex; justify-content: flex-end; gap: 10px; margin: 0 0 14px; }
+    .desktop-shortcuts a {
+      display: grid; justify-items: center; gap: 2px; min-width: 74px; padding: 3px 7px;
+      color: #51415f; font: .63rem/1.35 var(--mono); text-align: center; text-decoration: none;
+      border: 1px solid transparent; border-radius: 5px;
+    }
+    .desktop-shortcuts a:hover, .desktop-shortcuts a:focus-visible { color: #382448; background: #fff7; border-color: #d49cc9; }
+    .desktop-shortcuts b { font-size: 1.15rem; font-weight: 400; }
+    .desktop-layout { display: grid; grid-template-columns: minmax(0, 1fr) 156px; align-items: center; gap: 16px; }
+    .cat-window {
+      overflow: hidden; border: 2px solid #d777b5; border-radius: 8px;
+      background: #fff4fb; box-shadow: 4px 5px 0 rgba(82, 48, 88, .24);
+      transform: translateY(26px);
+    }
+    .cat-window-bar {
+      display: flex; align-items: center; justify-content: space-between; gap: 5px;
+      padding: 6px 8px; border-bottom: 1px solid #d89bc2;
+      background: linear-gradient(#f9c8e3, #edaed3); color: #432e50;
+      font: .61rem var(--mono);
+    }
+    .cat-window-controls { letter-spacing: 2px; }
+    .cat-image { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; }
+    .cat-caption { padding: 7px 8px; color: #6d5875; font: .62rem var(--mono); text-align: center; }
+    .desktop-status {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      min-height: 32px; padding: 5px 10px; border: 1px solid #dfa0c7; border-top: 0;
+      background: linear-gradient(#f9d9ea, #f4c3de); color: #65516e; font: .62rem var(--mono);
+    }
+    .desktop-status span:first-child::before { content: "● "; color: #86aa8c; }
     .terminal {
       position: relative;
       overflow: hidden;
       border: 1px solid #e2daee;
-      border-radius: 16px;
+      border-radius: 8px;
       background: var(--terminal);
       box-shadow: 0 20px 55px rgba(64, 47, 103, 0.10), 0 3px 10px rgba(64, 47, 103, 0.04);
     }
@@ -138,11 +190,25 @@
       .nav-links { gap: 14px; }
       .nav-links a { font-size: .7rem; }
       .hero { padding-top: 42px; }
+      .desktop-frame { padding: 7px; }
+      .desktop-workspace { padding: 10px; }
+      .desktop-layout { grid-template-columns: minmax(0, 1fr) 96px; gap: 9px; }
+      .cat-window { transform: translateY(14px); }
+      .os-menus { gap: 9px; }
+      .os-clock { font-size: .58rem; }
       .grid, .community { grid-template-columns: 1fr; }
       .experience { grid-template-columns: 1fr; gap: 4px; }
       .skill-row { grid-template-columns: 1fr; gap: 7px; }
       section { padding-bottom: 52px; }
       footer { flex-direction: column; }
+    }
+    @media (max-width: 420px) {
+      .os-brand { font-size: .58rem; }
+      .os-menus { gap: 6px; font-size: .58rem; }
+      .os-clock { display: none; }
+      .desktop-layout { grid-template-columns: 1fr; }
+      .cat-window { width: 132px; justify-self: end; transform: none; margin-top: -5px; }
+      .desktop-status { font-size: .55rem; }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; } }
   </style>
@@ -163,26 +229,47 @@
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
-        <div class="terminal">
-          <div class="terminal-bar" aria-hidden="true">
-            <span class="dot pink"></span><span class="dot yellow"></span><span class="dot green"></span>
-            <span class="terminal-label">ann-maria — ~/portfolio</span>
+        <div class="desktop-frame">
+          <div class="os-bar" aria-label="Desktop menu bar">
+            <span class="os-brand">✿ ann's desktop</span>
+            <div class="os-menus" aria-hidden="true"><span>File</span><span>Edit</span><span>View</span></div>
+            <span class="os-clock">home://online</span>
           </div>
-          <div class="terminal-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-          <div class="terminal-body">
-            <p class="command"><b>ann@cusat</b>:~$ whoami <span aria-hidden="true">▌</span></p>
-            <h1 id="hero-title">Ann Maria<span class="accent">_</span><br>IT student &amp; builder :)</h1>
-            <p class="hero-copy">CUSAT ’29 · AI + civic tech · Fort Kochi, Kerala</p>
-            <div class="hero-meta">
-              <span class="pill">[ CUSAT · B.Tech IT ]</span>
-              <span class="pill">[ CGPA 8.86 ]</span>
-              <span class="pill">[ Kochi, IN ]</span>
+          <div class="desktop-workspace">
+            <div class="desktop-shortcuts" aria-label="Desktop shortcuts">
+              <a href="#projects"><b aria-hidden="true">📁</b>projects</a>
+              <a href="#about"><b aria-hidden="true">📄</b>about.txt</a>
             </div>
-            <div class="hero-actions">
-              <a class="button" href="#projects">$ ls projects/</a>
-              <a class="text-link" href="mailto:hey.annmaria@gmail.com">hey.annmaria@gmail.com ↗</a>
+            <div class="desktop-layout">
+              <div class="terminal">
+                <div class="terminal-bar" aria-hidden="true">
+                  <span class="dot pink"></span><span class="dot yellow"></span><span class="dot green"></span>
+                  <span class="terminal-label">Terminal — ~/portfolio</span>
+                </div>
+                <div class="terminal-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+                <div class="terminal-body">
+                  <p class="command"><b>ann@cusat</b>:~$ whoami <span aria-hidden="true">▌</span></p>
+                  <h1 id="hero-title">Ann Maria<span class="accent">_</span><br>IT student &amp; builder :)</h1>
+                  <p class="hero-copy">CUSAT ’29 · AI + civic tech · Fort Kochi, Kerala</p>
+                  <div class="hero-meta">
+                    <span class="pill">[ B.Tech IT ]</span>
+                    <span class="pill">[ CGPA 8.86 ]</span>
+                    <span class="pill">[ Kochi, IN ]</span>
+                  </div>
+                  <div class="hero-actions">
+                    <a class="button" href="#projects">$ ls projects/</a>
+                    <a class="text-link" href="mailto:hey.annmaria@gmail.com">email Ann ↗</a>
+                  </div>
+                </div>
+              </div>
+              <aside class="cat-window" aria-label="Pixel kitty window">
+                <div class="cat-window-bar"><span>Kitty Friend</span><span class="cat-window-controls" aria-hidden="true">_ □ ×</span></div>
+                <img class="cat-image" src="assets/pixel-kitty.jpeg" alt="Pixel art white cat waving against a pastel pink background" width="1440" height="1440">
+                <div class="cat-caption">kitty.exe says hi ^_^</div>
+              </aside>
             </div>
           </div>
+          <div class="desktop-status"><span>system ready</span><span>1 window open · <a href="#contact">say hello :)</a></span></div>
         </div>
       </section>
 
