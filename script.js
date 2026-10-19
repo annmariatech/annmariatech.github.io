@@ -49,6 +49,7 @@ const catMessages = [
   "this bug is now a feature. the cat said so.",
   "reminder: hydrate, stretch, pet a cat.",
   "keyboard inspected. no bugs detected (by cat standards).",
+  "meooww you doin?"
 ];
 document.querySelector(".cat-button")?.addEventListener("click", () => {
   const message = document.querySelector(".cat-message");
@@ -146,7 +147,7 @@ if (dotArt && dotCanvas && dotContext) {
       vy: 0,
     }));
 
-    const glyphs = ["K", "Y", "O", "A", "✦", "♡", "✧", "X", "◇", "+"];
+    const glyphs = ["M", "E", "O", "W", "✦", "♡", "✧", "X", "◇", "+", "☾", "☀", "★", "☽", "☼", "❖"];
     const count = Math.max(8, Math.round(width / 110));
     for (let i = 0; i < count; i++) {
       const glyphSize = Math.max(29, Math.min(56, width / 34));
