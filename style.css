@@ -152,3 +152,51 @@ html,body{width:100%;max-width:100%;overflow-x:hidden}
   58%{transform:translateY(0) rotate(4deg)}
   78%{transform:translateY(-4px) rotate(-2deg)}
 }
+
+/* A calm, viewport-led entrance keeps the page lively without delaying access. */
+.motion-pending{opacity:0;transform:translateY(18px)}
+.motion-revealed{opacity:1;transform:translateY(0);transition:opacity .62s ease,transform .62s cubic-bezier(.2,.7,.25,1);transition-delay:var(--reveal-delay,0ms)}
+.typed-name{white-space:pre-wrap}
+.hero-sticker{animation:sticker-float 5s ease-in-out infinite}
+.sticker-heart{animation-delay:-2.4s}
+.nav-links a,.footer-bottom a,.github-profile-link,.filter-button,.cat-button,.theme-toggle,.terminal-shortcut{transition:color .18s ease,background-color .18s ease,border-color .18s ease,transform .18s ease,box-shadow .18s ease}
+.nav-links a:hover,.footer-bottom a:hover,.github-profile-link:hover{transform:translateY(-2px)}
+.filter-button:hover,.theme-toggle:hover,.terminal-shortcut:hover,.cat-button:hover{transform:translateY(-2px);box-shadow:0 6px 16px #735bc020}
+.project-card{transform:translateY(0);transition:transform .24s cubic-bezier(.2,.7,.25,1),box-shadow .24s ease,border-color .24s ease,opacity .62s ease}
+.project-card.motion-pending{transform:translateY(18px)}
+.project-card.motion-revealed:hover{transform:translateY(-5px) rotate(-.35deg)}
+.experience-card{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,opacity .62s ease}
+.experience-card:hover{transform:translateY(-3px);box-shadow:0 12px 26px #584a7018;border-color:#c2aee3}
+.album-art{transition:transform .25s ease,box-shadow .25s ease}
+.music-player:hover .album-art{transform:rotate(-1deg) scale(1.015);box-shadow:0 10px 24px #584a7018}
+.music-player:hover .vinyl{animation:record-spin 4s linear infinite}
+.hero-portrait img{transition:transform .6s cubic-bezier(.2,.7,.25,1),filter .3s ease}
+.hero-portrait:hover img{transform:scale(1.19);filter:saturate(1.08)}
+.cat-decoration pre{transition:transform .2s ease}
+.cat-terminal:hover .cat-decoration pre:not(.is-petting){transform:rotate(-2deg) translateY(-2px)}
+@keyframes sticker-float{0%,100%{translate:0 0}50%{translate:0 -7px}}
+@keyframes record-spin{to{transform:rotate(360deg)}}
+@media(max-width:760px){.hero-sticker{animation-duration:6s}.motion-pending{transform:translateY(12px)}}
+@media(hover:none){.music-player:hover .vinyl{animation:none}.hero-portrait:hover img{transform:scale(1.14)}}
+@media(prefers-reduced-motion:reduce){.motion-pending{opacity:1;transform:none}.motion-revealed{transition:none}.hero-sticker{animation:none}.music-player:hover .vinyl{animation:none}}
+.terminal-shortcut{width:54px;height:54px;font-size:1.2rem}
+@media(max-width:520px){.terminal-shortcut{width:48px;height:48px}}
+
+/* Framer DiscPlayer-inspired record deck, implemented for this static site. */
+.album-art{height:210px;min-height:0;aspect-ratio:auto}
+.disc-player{position:relative;display:block;width:min(80%,190px);aspect-ratio:1;padding:0;border:0;border-radius:50%;overflow:hidden;cursor:pointer;background:repeating-radial-gradient(circle,#332d3b 0 2px,#494050 2.5px 3px,#2d2834 3.5px 5px);box-shadow:0 9px 22px #29233355,inset 0 0 0 1px #ffffff24;transition:filter .25s ease,transform .25s ease}
+.disc-player::before{position:absolute;inset:0;border-radius:50%;background:linear-gradient(135deg,#ffffff38 0%,transparent 48%,#15111d24 100%);content:"";pointer-events:none}
+.disc-center{position:absolute;top:50%;left:50%;width:30%;height:30%;border:1px solid #ffffff58;border-radius:50%;background:radial-gradient(circle,#d8c4e7 0%,#9579ad 36%,#403646 72%);box-shadow:inset 0 0 10px #241d2b99;transform:translate(-50%,-50%)}
+.record-arm{position:absolute;z-index:2;top:10%;right:12%;width:35%;height:10%;transform:rotate(15deg);transform-origin:calc(100% - 10px) center;transition:transform 1.2s cubic-bezier(.32,.72,0,1)}
+.record-arm::before{position:absolute;top:50%;right:0;width:20px;height:20px;border-radius:50%;background:#a89dab;box-shadow:0 2px 4px #19141e66;content:"";transform:translateY(-50%)}
+.record-arm::after{position:absolute;top:50%;right:10px;width:90%;height:4px;border-radius:4px;background:#9b909f;box-shadow:0 2px 4px #19141e55;content:"";transform:translateY(-50%)}
+.record-needle{position:absolute;top:50%;left:-5px;width:12px;height:12px;border-radius:50%;background:#d89ab9;transform:translateY(-50%)}
+.album-art.is-playing .record-arm{transform:rotate(0deg)}
+.music-player:hover .disc-player{filter:brightness(1.08);transform:scale(1.025)}
+.disc-player:focus-visible{outline:3px solid #ac91ec;outline-offset:5px}
+@media(max-width:760px){.album-art{height:200px}}
+@media(max-width:520px){.album-art{height:190px}}
+@media(prefers-reduced-motion:reduce){.disc-player,.record-arm{transition:none}.music-player:hover .disc-player{transform:none}}
+.spotify-embed-shell{width:100%;height:152px;margin-top:10px;overflow:hidden;border-radius:9px}
+.spotify-embed-shell .spotify-slot{display:block;width:100%;height:152px;min-height:152px;padding:0;border:0;border-radius:9px;background:transparent}
+.spotify-embed-shell .spotify-embed{margin-top:0}
