@@ -29,3 +29,83 @@
 @media(max-width:520px){.profile-footer .dot-art{height:210px}.profile-footer .footer-inner{width:100%}.profile-footer .footer-bottom{width:calc(100% - 30px);margin-inline:auto}}
 
 .cat-message:empty{display:none}
+
+html.theme-dark{color-scheme:dark;--paper:#191624;--ink:#eee9f8;--muted:#aaa2bb;--line:#383044;--lilac:#302a40;--pink:#392b39;--mint:#273831;--peach:#3a312d;--purple:#c3a8ef;--shadow:0 18px 55px #09071180}
+html.theme-dark body{color:var(--ink);background:linear-gradient(135deg,#191624 0%,#211923 48%,#182027 100%)}
+html.theme-dark a{color:#c5adf2}
+html.theme-dark a:hover{color:#e2d2ff}
+html.theme-dark .ambient-one{background:#634b86}
+html.theme-dark .ambient-two{background:#71465e}
+html.theme-dark .muted{color:#8d849e}
+html.theme-dark .nav-links a{color:#c0b8ce}
+html.theme-dark .nav-links a:hover{color:#dfcfff}
+html.theme-dark .theme-toggle{border-color:#50445f;background:#292435;color:#e1d3f6}
+html.theme-dark .terminal-window{border-color:#40394f;background:#211e2d}
+html.theme-dark .window-bar{border-color:#40394f;background:#2b2637}
+html.theme-dark .window-title,html.theme-dark .window-status{color:#b1a9c0}
+html.theme-dark .prompt{color:#b8b0c8}
+html.theme-dark .hero-subtitle{color:#d1c8dd}
+html.theme-dark .hero-copy{color:#c0b8c9}
+html.theme-dark .hero-tags span{border-color:#453b53;background:#2a2635;color:#d0c6dc}
+html.theme-dark .button-quiet{border-color:#514662;background:#302a3d;color:#ded1f4}
+html.theme-dark .side-terminal{border-color:#453c53;background:#292535}
+html.theme-dark .side-terminal dt{color:#aea4bc}
+html.theme-dark .side-terminal dd{color:#e3dbee}
+html.theme-dark .paper-card,html.theme-dark .mini-window,html.theme-dark .stack-window{border-color:#41394e;background:#24212f;box-shadow:0 8px 26px #09071140}
+html.theme-dark .about-note p,html.theme-dark .mini-window li{color:#d0c9d8}
+html.theme-dark .mini-title{border-color:#42394e;background:#302a3c;color:#c9bdd8}
+html.theme-dark .education-card{border-color:#4b3e50;background:linear-gradient(125deg,#332c38,#29232f)}
+html.theme-dark .education-card p{color:#c6bdce}
+html.theme-dark .project-lilac{border-color:#474057;background:linear-gradient(145deg,#282333,#302a3d)}
+html.theme-dark .project-mint{border-color:#394b45;background:linear-gradient(145deg,#252d2c,#293a34)}
+html.theme-dark .project-peach{border-color:#52433f;background:linear-gradient(145deg,#302a2c,#3a302d)}
+html.theme-dark .project-card h3 span{color:#c2b8cb}
+html.theme-dark .project-card>p:not(.eyebrow){color:#d0c9d8}
+html.theme-dark .file-icon{border-color:#51465f;background:#322c3e;color:#d2baf2}
+html.theme-dark .project-bottom{border-color:#50465a;color:#b8adc2}
+html.theme-dark .project-footnote{color:#b8b0c2}
+html.theme-dark .filter-button{border-color:#4a4057;background:#292533;color:#d0c6dd}
+html.theme-dark .filter-button.is-active{border-color:#9a80c3;background:#403451;color:#eee2ff}
+html.theme-dark .tech-list span,html.theme-dark .tag-cloud span{background:#363044;color:#e1d8eb}
+html.theme-dark .tag-cloud span{background:#302a3b}
+html.theme-dark .stack-line{border-color:#474051}
+html.theme-dark .stack-key{color:#c0b7ca}
+html.theme-dark .community-notes p{color:#c9c1d2}
+html.theme-dark .community-notes b{color:#f0eaf5}
+html.theme-dark .experience-card{border-color:#41394e;background:#24212f;box-shadow:0 7px 22px #09071140}
+html.theme-dark .experience-card p{color:#c9c1d2}
+html.theme-dark .experience-card .experience-role{color:#d0b9ef}
+html.theme-dark .music-player{border-color:#44394c;background:linear-gradient(115deg,#342832,#29232f 48%,#232e35);box-shadow:0 10px 30px #09071140}
+html.theme-dark .album-art{border-color:#504154;background:radial-gradient(circle at 26% 22%,#ffffff26 0 3px,transparent 4px),linear-gradient(140deg,#54416d,#694454 55%,#405d59)}
+html.theme-dark .art-label{border-color:#ffffff35;background:#211d2a9c;color:#f1e9f6}
+html.theme-dark .music-description{color:#d0c8d8}
+html.theme-dark .spotify-slot{border-color:#554960;background:#292431;color:#c8bdcf}
+html.theme-dark .cat-terminal{border-color:#4b3e55;background:linear-gradient(110deg,#30273d,#372832 56%,#253631)}
+html.theme-dark .cat-copy>p:not(.prompt){color:#d0c8d8}
+html.theme-dark .cat-button{border-color:#51445e;background:#302a3a;color:#e3d8ef}
+html.theme-dark .cat-message{color:#d3b5dc}
+html.theme-dark .cat-decoration{color:#c9b1e9}
+html.theme-dark .contact-card{border-color:#4d4058;background:linear-gradient(110deg,#30283e,#372832 55%,#27362f)}
+html.theme-dark .contact-card p{color:#d0c8d8}
+html.theme-dark .resume-note{border-color:#51465d;color:#d1c6df}
+html.theme-dark .resume-note strong{color:#eee5f6}
+html.theme-dark .resume-note:hover{border-color:#a78acd;background:#30283c;color:#f1e6ff}
+html.theme-dark .profile-footer{border-color:#44394f;background:linear-gradient(125deg,#211c2d,#28212c 52%,#202a32);color:#eee9f8}
+html.theme-dark .profile-footer .footer-bottom{border-color:#463c50;color:#b9b0c2}
+html.theme-dark .profile-footer .footer-bottom a{color:#d3c2ec}
+html.theme-dark .github-profile-link{border-color:#51445f;background:#2b2637;color:#d6c2f3}
+html.theme-dark .github-section .contribution-chart{border-color:#42394f;background:linear-gradient(120deg,#24212f,#292431 60%,#232d34);box-shadow:0 10px 28px #09071140}
+html.theme-dark .terminal-shortcut{border-color:#51445f;background:#292434;color:#ddc9fb;box-shadow:0 6px 18px #09071180}
+html.theme-dark .command-dialog{border-color:#51445f;background:#24212f;color:var(--ink)}
+html.theme-dark .command-dialog form>p:not(.prompt),html.theme-dark .command-dialog ul{color:#d0c8d8}
+html.theme-dark .dialog-close{border-color:#50465a;background:#302a3c;color:#e3d9ed}
+html.theme-dark .command-dialog label{border-color:#4b4058;background:#2e2939;color:#d6c2f3}
+html.theme-dark .command-dialog input{color:var(--ink)}
+html.theme-dark .command-output{color:#d8bce5}
+html.theme-dark .eyebrow,html.theme-dark .section-note{color:#c3b8ce}
+html.theme-dark .section-index{color:#cfb0eb}
+html.theme-dark .card-corner{color:#d2b4ec}
+html.theme-dark .about-side li span,html.theme-dark .edu-stamp{color:#c4afd7}
+html.theme-dark .project-card:hover{border-color:#9c82c0}
+html.theme-dark .button-primary{border-color:#8064a9;background:#8064a9;color:#fff}
+html.theme-dark .cat-button:hover{border-color:#a88dc8;background:#3d334b}

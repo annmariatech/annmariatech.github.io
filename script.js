@@ -57,9 +57,22 @@ document.querySelector(".cat-button")?.addEventListener("click", () => {
 });
 
 const themeButton = document.querySelector(".theme-toggle");
+function updateThemeButton(isDark) {
+  if (!themeButton) return;
+  themeButton.textContent = isDark ? "☀ light mode" : "☾ dark mode";
+  themeButton.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+  themeButton.setAttribute("aria-pressed", String(isDark));
+}
+updateThemeButton(document.documentElement.classList.contains("theme-dark"));
 themeButton?.addEventListener("click", () => {
-  const active = document.documentElement.classList.toggle("theme-alt");
-  themeButton.setAttribute("aria-pressed", String(active));
+  const active = document.documentElement.classList.toggle("theme-dark");
+  updateThemeButton(active);
+  document.querySelector('meta[name="theme-color"]')?.setAttribute("content", active ? "#191624" : "#fbf8ff");
+  try {
+    localStorage.setItem("annmaria-theme", active ? "dark" : "light");
+  } catch {
+    // Keep the toggle usable if browser storage is unavailable.
+  }
 });
 
 const commandDialog = document.querySelector(".command-dialog");
