@@ -51,9 +51,15 @@ const catMessages = [
   "keyboard inspected. no bugs detected (by cat standards).",
   "meooww you doin?"
 ];
+const catAscii = document.querySelector(".cat-decoration pre");
 document.querySelector(".cat-button")?.addEventListener("click", () => {
   const message = document.querySelector(".cat-message");
   if (message) message.textContent = catMessages[Math.floor(Math.random() * catMessages.length)];
+  if (catAscii) {
+    catAscii.classList.remove("is-petting");
+    void catAscii.offsetWidth;
+    catAscii.classList.add("is-petting");
+  }
 });
 
 const themeButton = document.querySelector(".theme-toggle");

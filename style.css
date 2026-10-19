@@ -109,11 +109,46 @@ html.theme-dark .about-side li span,html.theme-dark .edu-stamp{color:#c4afd7}
 html.theme-dark .project-card:hover{border-color:#9c82c0}
 html.theme-dark .button-primary{border-color:#8064a9;background:#8064a9;color:#fff}
 html.theme-dark .cat-button:hover{border-color:#a88dc8;background:#3d334b}
+html.theme-dark .hero-portrait{border-color:#51445f;background:#fff}
 
-html,body{max-width:100%;overflow-x:clip}
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+.hero-portrait{position:relative;justify-self:center;width:min(100%,300px);height:360px;overflow:hidden;border:1px solid #e3dbea;border-radius:15px;background:#fff;box-shadow:var(--shadow)}
+.hero-portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.14)}
 @media(max-width:760px){
   .profile-footer{width:calc(100% + 30px);margin-left:-15px;margin-right:-15px}
   .profile-footer .footer-inner{width:100%}
   .profile-footer .dot-art{width:100%;margin-left:0}
   .profile-footer .footer-bottom{width:calc(100% - 30px);margin-inline:auto}
+  .hero-portrait{width:min(100%,340px);height:400px}
+}
+@media(max-width:520px){.hero-portrait{width:min(100%,280px);height:340px}}
+@media(max-width:520px){
+  body{font-size:15px}
+  .nav-links a{font-size:.75rem}
+  .prompt{font-size:.8rem}
+  .window-title{font-size:.68rem}
+  .hero-copy{font-size:.95rem}
+  .hero-tags span{font-size:.72rem}
+  .button{font-size:.82rem}
+  .section-index{font-size:.8rem}
+  .about-note p,.mini-window li{font-size:.84rem}
+  .eyebrow{font-size:.69rem}
+  .education-card p,.experience-card p,.project-card>p:not(.eyebrow),.community-notes p,.music-description,.cat-copy>p:not(.prompt),.contact-card p{font-size:.77rem}
+  .filter-button{font-size:.74rem}
+  .tech-list span,.tag-cloud span{font-size:.68rem}
+  .project-bottom{font-size:.67rem}
+  .project-footnote{font-size:.7rem}
+  .stack-key{font-size:.74rem}
+  .cat-button{font-size:.76rem}
+  .contact-links>a:not(.button){font-size:.76rem}
+  .contact-links .button{font-size:.78rem}
+  .resume-note>span strong{font-size:.8rem}
+  .profile-footer .footer-bottom{font-size:.68rem}
+}
+.cat-decoration pre.is-petting{animation:cat-pet 720ms cubic-bezier(.34,1.45,.64,1) 1}
+@keyframes cat-pet{
+  0%,100%{transform:translateY(0) rotate(0)}
+  28%{transform:translateY(-10px) rotate(-5deg)}
+  58%{transform:translateY(0) rotate(4deg)}
+  78%{transform:translateY(-4px) rotate(-2deg)}
 }
