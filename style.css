@@ -109,3 +109,11 @@ html.theme-dark .about-side li span,html.theme-dark .edu-stamp{color:#c4afd7}
 html.theme-dark .project-card:hover{border-color:#9c82c0}
 html.theme-dark .button-primary{border-color:#8064a9;background:#8064a9;color:#fff}
 html.theme-dark .cat-button:hover{border-color:#a88dc8;background:#3d334b}
+
+html,body{max-width:100%;overflow-x:clip}
+@media(max-width:760px){
+  .profile-footer{width:calc(100% + 30px);margin-left:-15px;margin-right:-15px}
+  .profile-footer .footer-inner{width:100%}
+  .profile-footer .dot-art{width:100%;margin-left:0}
+  .profile-footer .footer-bottom{width:calc(100% - 30px);margin-inline:auto}
+}
