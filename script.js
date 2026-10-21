@@ -260,7 +260,7 @@ commandInput?.addEventListener("keydown", (event) => {
     obsessions: "Current obsessions: Sade, Human made designs and Spicy food.",
     projects: "Currently working on: My portfolio(yes this one). See #projects for past projects and more details.",
     music: "Singer and keyboardist with Ektara, I also sing and play the keyboard for a bunch of choirs at church. See #music.",
-    community: "TinkerHub WIT Lead · SAIT Design Team · AWS SBG Tech Lead · Ektara keyboardist.",
+    community: "TinkerHub WIT Lead · SAIT Design Team · AWS CUSAT SBG Technical Lead · Ektara keyboardist.",
     github: "Checkout github.com/annmariatech and follow if you like what you see.",
     contact: "Say hello at hey.annmaria@gmail.com or use the contact section.",
     cat: "cat.exe says: your current task is to give a cat a nice life.",
