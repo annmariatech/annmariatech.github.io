@@ -277,7 +277,7 @@ const dotContext = dotCanvas?.getContext("2d");
 
 if (dotArt && dotCanvas && dotContext) {
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const colors = ["#ad91d4", "#c89bd2", "#e3a1c1", "#d9a5c9", "#a6b6dc"];
+  let colors = [];
   const mainDots = [];
   const floaters = [];
   const pointer = { x: -1000, y: -1000, active: false };
@@ -316,20 +316,21 @@ if (dotArt && dotCanvas && dotContext) {
     dotCanvas.width = Math.round(width * pixelRatio);
     dotCanvas.height = Math.round(height * pixelRatio);
     dotContext.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    colors = ["--footer-dot-one", "--footer-dot-two", "--footer-dot-three", "--footer-dot-four", "--footer-dot-five"]
+      .map((name) => getComputedStyle(dotArt).getPropertyValue(name).trim());
     mainDots.length = 0;
     floaters.length = 0;
 
     const mobile = width < 650;
-    const fontSize = mobile ? Math.min(34, width / 11) : Math.min(126, width / 23);
+    const fontSize = mobile ? Math.min(34, width / 10) : Math.min(108, width / 18);
     const phrase = mobile ? "KEEP DOING\nWHAT YOU LOVE" : "KEEP DOING WHAT YOU LOVE";
-    const step = mobile ? 8 : 10;
-    const phrasePoints = sampleText(phrase, `700 ${fontSize}px "DM Mono", monospace`, width * 0.96, step);
+    const step = mobile ? 5 : 6;
+    const phrasePoints = sampleText(phrase, `700 ${fontSize}px "DM Mono", monospace`, width * 0.94, step);
     phrasePoints.forEach((point) => mainDots.push({
       x: width / 2 + point.x,
       y: height / 2 + point.y + height * 0.12,
       color: colors[Math.min(colors.length - 1, Math.floor((point.x / width + 0.5) * colors.length))],
-      radius: step * 0.39,
-      phase: Math.random() * Math.PI * 2,
+      radius: step * 0.56,
       vx: 0,
       vy: 0,
     }));
@@ -365,21 +366,25 @@ if (dotArt && dotCanvas && dotContext) {
     };
 
     mainDots.forEach((dot) => {
-      const baseX = dot.x;
-      const baseY = dot.y + (reducedMotion.matches ? 0 : Math.sin(t * 1.05 + dot.phase) * 1.6);
       if (pointer.active && !reducedMotion.matches) {
         const dx = dot.x - pointer.x;
         const dy = dot.y - pointer.y;
         const distance = Math.hypot(dx, dy);
-        if (distance < 100 && distance > 0) {
-          const force = (1 - distance / 100) * 14;
+        if (distance < 90 && distance > 0) {
+          const force = (1 - distance / 90) * 12;
           dot.vx += (dx / distance) * force * 0.09;
           dot.vy += (dy / distance) * force * 0.09;
         }
       }
       dot.vx *= 0.88;
       dot.vy *= 0.88;
-      drawParticle(baseX + dot.vx, baseY + dot.vy, dot.radius, dot.color);
+      const offset = Math.hypot(dot.vx, dot.vy);
+      const maxOffset = dot.radius * 0.85;
+      if (offset > maxOffset) {
+        dot.vx *= maxOffset / offset;
+        dot.vy *= maxOffset / offset;
+      }
+      drawParticle(dot.x + dot.vx, dot.y + dot.vy, dot.radius, dot.color);
     });
 
     floaters.forEach((glyph) => {
@@ -406,12 +411,16 @@ if (dotArt && dotCanvas && dotContext) {
         drawParticle(x, y, glyph.radius, glyph.color);
       });
     });
+
   }
 
   function animate(time) {
     draw(time);
     if (!reducedMotion.matches) frame = requestAnimationFrame(animate);
   }
+
+  const themeObserver = new MutationObserver(() => buildArt());
+  themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
 
   dotArt.addEventListener("pointermove", (event) => {
     const bounds = dotArt.getBoundingClientRect();
