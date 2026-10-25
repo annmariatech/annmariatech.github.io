@@ -13,6 +13,55 @@ function getSpotifyEmbedUrl(value) {
   return `https://open.spotify.com/embed/playlist/${match[1]}?utm_source=generator&theme=0`;
 }
 
+const projectPreviewDialog = document.querySelector(".project-preview-dialog");
+if (projectPreviewDialog) {
+  const projectPreviewTitle = projectPreviewDialog.querySelector("#preview-dialog-title");
+  const projectPreviewGallery = projectPreviewDialog.querySelector(".preview-gallery");
+  const projectPreviewImages = {
+    argus: [{
+      src: "https://github.com/user-attachments/assets/48c54e85-ed3c-42cd-80b2-23154220411c",
+      alt: "Argus QR fraud screening interface from the project README",
+    }],
+    soochi: [
+      { src: "assets/soochi-home-screen.png", alt: "Soochi fabric scrap inventory homepage" },
+      { src: "assets/soochi-product-matching.jpeg", alt: "Soochi product matching view with selected scraps and suggested products" },
+    ],
+  };
+
+  function openProjectPreview(projectName) {
+    const images = projectPreviewImages[projectName];
+    if (!images?.length) return;
+    projectPreviewTitle.textContent = `${projectName === "soochi" ? "Soochi" : "Argus"} screenshots`;
+    projectPreviewGallery.replaceChildren(...images.map(({ src, alt }) => {
+      const image = document.createElement("img");
+      image.className = "preview-gallery-image";
+      image.src = src;
+      image.alt = alt;
+      image.loading = "lazy";
+      return image;
+    }));
+    projectPreviewDialog.showModal();
+  }
+
+  projectPreviewDialog.querySelector(".preview-dialog-close")?.addEventListener("click", () => {
+    projectPreviewDialog.close();
+  });
+
+  document.querySelectorAll(".project-card[data-project-preview]").forEach((card) => {
+    card.addEventListener("click", (event) => {
+      if (event.target.closest("a, .project-preview-action")) return;
+      openProjectPreview(card.dataset.projectPreview);
+    });
+    card.querySelector(".project-preview-action")?.addEventListener("click", () => {
+      openProjectPreview(card.dataset.projectPreview);
+    });
+  });
+
+  projectPreviewDialog.addEventListener("click", (event) => {
+    if (event.target === projectPreviewDialog) projectPreviewDialog.close();
+  });
+}
+
 const spotifyEmbedUrl = getSpotifyEmbedUrl(SPOTIFY_PLAYLIST);
 const discPlayer = document.querySelector(".disc-player");
 const albumArt = document.querySelector(".album-art");

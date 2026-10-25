@@ -215,3 +215,19 @@ html,body{width:100%;max-width:100%;overflow-x:hidden}
 .spotify-embed-shell{width:100%;height:152px;margin-top:10px;overflow:hidden;border-radius:9px}
 .spotify-embed-shell .spotify-slot{display:block;width:100%;height:152px;min-height:152px;padding:0;border:0;border-radius:9px;background:transparent}
 .spotify-embed-shell .spotify-embed{margin-top:0}
+.project-blue{background:linear-gradient(145deg,#fff,#edf6ff)}
+html.theme-dark .project-blue{border-color:#3b4b5c;background:linear-gradient(145deg,#252b35,#293746)}
+.project-rose{background:linear-gradient(145deg,#fff,#fff0f6)}
+html.theme-dark .project-rose{border-color:#604859;background:linear-gradient(145deg,#2d2631,#382c39)}
+.project-card[data-project-preview]{cursor:zoom-in}
+.project-preview-action{padding:3px 0;border:0;background:transparent;color:var(--purple);font:inherit;font-size:.62rem;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.project-preview-action:hover{color:var(--ink)}
+.project-preview-action:focus-visible{outline:2px solid #ac91ec;outline-offset:3px;border-radius:3px}
+.project-preview-dialog{width:min(960px,calc(100% - 28px));max-height:calc(100% - 28px);padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--paper);color:var(--ink);box-shadow:0 24px 80px #19142670}
+.project-preview-dialog::backdrop{background:#171321b8;backdrop-filter:blur(4px)}
+.preview-dialog-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:10px;color:var(--muted);font-size:.72rem}
+.preview-dialog-close{width:30px;height:30px;border:1px solid var(--line);border-radius:7px;background:transparent;color:var(--ink);font:inherit;cursor:pointer}
+.preview-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:12px;max-height:calc(100vh - 105px);overflow:auto}
+.preview-gallery-image{display:block;width:100%;max-height:calc(100vh - 125px);border:1px solid var(--line);border-radius:8px;background:#fff;object-fit:contain}
+html.theme-dark .preview-gallery-image{border-color:#574d62;background:#f9f6fc}
+@media(max-width:520px){.project-preview-dialog{padding:10px}.preview-gallery{grid-template-columns:1fr;gap:8px}.preview-gallery-image{max-height:calc(100vh - 120px)}}
