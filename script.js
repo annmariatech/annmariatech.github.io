@@ -66,6 +66,10 @@ const spotifyEmbedUrl = getSpotifyEmbedUrl(SPOTIFY_PLAYLIST);
 const discPlayer = document.querySelector(".disc-player");
 const albumArt = document.querySelector(".album-art");
 const musicPlayer = document.querySelector(".music-player");
+document.querySelectorAll(".equalizer i").forEach((bar) => {
+  bar.style.setProperty("--eq-duration", `${(0.55 + Math.random() * 0.75).toFixed(2)}s`);
+  bar.style.setProperty("--eq-delay", `${(-Math.random() * 1.2).toFixed(2)}s`);
+});
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let spotifyController = null;
 let spotifyControllerReady = false;
@@ -264,7 +268,7 @@ const catFrames = [
 ( -.- )
  > ^ <`,
   String.raw` /\_/\\
-( o.O )
+( o.o )
  > ^ <`,
 ];
 let catFrameTimeout;
