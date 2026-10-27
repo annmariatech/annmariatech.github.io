@@ -65,6 +65,7 @@ if (projectPreviewDialog) {
 const spotifyEmbedUrl = getSpotifyEmbedUrl(SPOTIFY_PLAYLIST);
 const discPlayer = document.querySelector(".disc-player");
 const albumArt = document.querySelector(".album-art");
+const musicPlayer = document.querySelector(".music-player");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let spotifyController = null;
 let spotifyControllerReady = false;
@@ -102,6 +103,7 @@ function setDiscPlaying(isPlaying) {
   if (!discPlayer || !albumArt || discIsPlaying === isPlaying) return;
   discIsPlaying = isPlaying;
   albumArt.classList.toggle("is-playing", isPlaying);
+  musicPlayer?.classList.toggle("is-playing", isPlaying);
   discPlayer.setAttribute("aria-pressed", String(isPlaying));
   discPlayer.setAttribute("aria-label", isPlaying ? "Pause Spotify playlist" : "Play Spotify playlist");
   if (isPlaying) startDiscSpin();
@@ -251,14 +253,43 @@ const catMessages = [
   "meooww you doin?"
 ];
 const catAscii = document.querySelector(".cat-decoration pre");
+const catFrames = [
+  String.raw` /\_/\\
+( o.o )
+ > ^ <`,
+  String.raw` /\_/\\
+( ^.^ )
+ > ^ <`,
+  String.raw` /\_/\\
+( -.- )
+ > ^ <`,
+  String.raw` /\_/\\
+( o.O )
+ > ^ <`,
+];
+let catFrameTimeout;
+
 document.querySelector(".cat-button")?.addEventListener("click", () => {
   const message = document.querySelector(".cat-message");
   if (message) message.textContent = catMessages[Math.floor(Math.random() * catMessages.length)];
-  if (catAscii) {
-    catAscii.classList.remove("is-petting");
-    void catAscii.offsetWidth;
-    catAscii.classList.add("is-petting");
+  if (!catAscii) return;
+
+  window.clearTimeout(catFrameTimeout);
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    catAscii.textContent = catFrames[0];
+    return;
   }
+
+  let frameIndex = 1;
+  const showNextFrame = () => {
+    if (frameIndex >= catFrames.length) {
+      catAscii.textContent = catFrames[0];
+      return;
+    }
+    catAscii.textContent = catFrames[frameIndex++];
+    catFrameTimeout = window.setTimeout(showNextFrame, 150);
+  };
+  showNextFrame();
 });
 
 const themeButton = document.querySelector(".theme-toggle");
