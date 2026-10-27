@@ -125,27 +125,27 @@ html,body{width:100%;max-width:100%;overflow-x:hidden}
 }
 @media(max-width:520px){.hero-portrait{width:min(100%,280px);height:340px}}
 @media(max-width:520px){
-  body{font-size:15px}
-  .nav-links a{font-size:.75rem}
-  .prompt{font-size:.8rem}
-  .window-title{font-size:.68rem}
-  .hero-copy{font-size:.95rem}
-  .hero-tags span{font-size:.72rem}
-  .button{font-size:.82rem}
-  .section-index{font-size:.8rem}
-  .about-note p,.mini-window li{font-size:.84rem}
-  .eyebrow{font-size:.69rem}
-  .education-card p,.experience-card p,.project-card>p:not(.eyebrow),.community-notes p,.music-description,.cat-copy>p:not(.prompt),.contact-card p{font-size:.77rem}
-  .filter-button{font-size:.74rem}
-  .tech-list span,.tag-cloud span{font-size:.68rem}
-  .project-bottom{font-size:.67rem}
-  .project-footnote{font-size:.7rem}
-  .stack-key{font-size:.74rem}
-  .cat-button{font-size:.76rem}
-  .contact-links>a:not(.button){font-size:.76rem}
-  .contact-links .button{font-size:.78rem}
-  .resume-note>span strong{font-size:.8rem}
-  .profile-footer .footer-bottom{font-size:.68rem}
+  body{font-size:16px}
+  .nav-links a{font-size:.8rem}
+  .prompt{font-size:.86rem}
+  .window-title{font-size:.74rem}
+  .hero-copy{font-size:1rem}
+  .hero-tags span{font-size:.77rem}
+  .button{font-size:.88rem}
+  .section-index{font-size:.85rem}
+  .about-note p,.mini-window li{font-size:.9rem}
+  .eyebrow{font-size:.74rem}
+  .education-card p,.experience-card p,.project-card>p:not(.eyebrow),.community-notes p,.music-description,.cat-copy>p:not(.prompt),.contact-card p{font-size:.84rem}
+  .filter-button{font-size:.8rem}
+  .tech-list span,.tag-cloud span{font-size:.73rem}
+  .project-bottom{font-size:.73rem}
+  .project-footnote{font-size:.76rem}
+  .stack-key{font-size:.8rem}
+  .cat-button{font-size:.82rem}
+  .contact-links>a:not(.button){font-size:.82rem}
+  .contact-links .button{font-size:.84rem}
+  .resume-note>span strong{font-size:.86rem}
+  .profile-footer .footer-bottom{font-size:.74rem}
 }
 .cat-decoration pre.is-petting{animation:cat-pet 720ms cubic-bezier(.34,1.45,.64,1) 1}
 @keyframes cat-pet{
@@ -231,3 +231,14 @@ html.theme-dark .project-rose{border-color:#604859;background:linear-gradient(14
 .preview-gallery-image{display:block;width:100%;max-height:calc(100vh - 125px);border:1px solid var(--line);border-radius:8px;background:#fff;object-fit:contain}
 html.theme-dark .preview-gallery-image{border-color:#574d62;background:#f9f6fc}
 @media(max-width:520px){.project-preview-dialog{padding:10px}.preview-gallery{grid-template-columns:1fr;gap:8px}.preview-gallery-image{max-height:calc(100vh - 120px)}}
+
+/* Resume download: a compact file action, aligned with the existing contact layout. */
+.resume-note{align-items:center;border:1px solid #d9cde9;background:linear-gradient(110deg,#fffdfd,#faf6ff);box-shadow:0 4px 14px #51416c12;color:#66567f;transition:transform .18s ease,border-color .18s ease,background .18s ease,box-shadow .18s ease}
+.resume-note:hover{transform:translateY(-1px);border-color:#aa91ce;background:linear-gradient(110deg,#fff,#f6efff);box-shadow:0 7px 18px #51416c20;color:#553d79}
+.resume-note .resume-download-icon{display:grid;width:27px;height:27px;flex:0 0 27px;place-items:center;border:1px solid #ded3ed;border-radius:7px;background:#f3edfb;color:#7655a4;font-size:1.45rem;line-height:1}
+.resume-note strong{color:#59466f;font-size:.7rem;letter-spacing:.01em}
+html.theme-dark .resume-note{border-color:#52445f;background:linear-gradient(110deg,#292432,#30283a);box-shadow:0 4px 14px #09071135;color:#e3d7f1}
+html.theme-dark .resume-note:hover{border-color:#a78acd;background:linear-gradient(110deg,#302839,#3a2e46);box-shadow:0 7px 18px #09071155;color:#f4eaff}
+html.theme-dark .resume-note .resume-download-icon{border-color:#665477;background:#3b3048;color:#d8bdf6}
+html.theme-dark .resume-note strong{color:#eee5f6}
+@media(max-width:520px){.resume-note{align-items:center}}
