@@ -299,7 +299,7 @@ document.querySelector(".cat-button")?.addEventListener("click", () => {
 const themeButton = document.querySelector(".theme-toggle");
 function updateThemeButton(isDark) {
   if (!themeButton) return;
-  themeButton.textContent = isDark ? "☀ light mode" : "☾ dark mode";
+  themeButton.textContent = isDark ? "☀" : "☾";
   themeButton.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
   themeButton.setAttribute("aria-pressed", String(isDark));
 }
