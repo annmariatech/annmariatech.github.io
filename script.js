@@ -204,34 +204,25 @@ motionPreference.addEventListener?.("change", (event) => {
   heroName.textContent = heroNameText;
 });
 
-if (!motionPreference.matches && "IntersectionObserver" in window) {
-  const revealTargets = document.querySelectorAll(
-    ".section:not(.hero), .profile-footer, .project-card, .experience-card, .hero-portrait, .about-note, .about-side, .stack-window, .music-player, .cat-terminal, .contact-card, .resume-note, .contribution-chart"
-  );
-  revealTargets.forEach((target) => target.classList.add("motion-pending"));
-  document.querySelectorAll(".project-grid, .experience-grid").forEach((group) => {
-    group.querySelectorAll(".project-card, .experience-card").forEach((card, index) => {
-      card.style.setProperty("--reveal-delay", `${Math.min(index, 3) * 90}ms`);
+const projectGrid = document.querySelector(".project-grid");
+if (projectGrid && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+  let pointerFrame = 0;
+  let pendingPointer = null;
+  projectGrid.addEventListener("pointermove", (event) => {
+    const card = event.target.closest?.(".project-card");
+    if (!card) return;
+    pendingPointer = { card, x: event.clientX, y: event.clientY };
+    if (pointerFrame) return;
+    pointerFrame = window.requestAnimationFrame(() => {
+      pointerFrame = 0;
+      if (!pendingPointer) return;
+      const { card: activeCard, x, y } = pendingPointer;
+      const bounds = activeCard.getBoundingClientRect();
+      activeCard.style.setProperty("--spot-x", `${x - bounds.left}px`);
+      activeCard.style.setProperty("--spot-y", `${y - bounds.top}px`);
+      pendingPointer = null;
     });
-  });
-
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.remove("motion-pending");
-      entry.target.classList.add("motion-revealed");
-      observer.unobserve(entry.target);
-    });
-  }, { rootMargin: "0px 0px -7% 0px", threshold: 0.02 });
-
-  revealTargets.forEach((target) => revealObserver.observe(target));
-  document.addEventListener("focusin", (event) => {
-    const target = event.target.closest?.(".motion-pending");
-    if (!target) return;
-    revealObserver.unobserve(target);
-    target.classList.remove("motion-pending");
-    target.classList.add("motion-revealed");
-  });
+  }, { passive: true });
 }
 
 document.querySelectorAll(".filter-button").forEach((button) => {
