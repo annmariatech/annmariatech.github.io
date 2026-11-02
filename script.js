@@ -204,6 +204,71 @@ motionPreference.addEventListener?.("change", (event) => {
   heroName.textContent = heroNameText;
 });
 
+if (!motionPreference.matches && "IntersectionObserver" in window) {
+  const revealTargets = document.querySelectorAll(
+    ".section:not(.hero) > .section-heading, .profile-footer, .project-card, .experience-card, .community-card, .hero-portrait, .about-note, .about-side, .stack-window, .stack-line, .music-player, .cat-terminal, .contact-card, .resume-note, .contribution-chart"
+  );
+  let revealObserver;
+  const pendingTargets = new Set(revealTargets);
+  let fallbackFrame = 0;
+
+  const revealTarget = (target) => {
+    if (!pendingTargets.delete(target)) return;
+    target.classList.remove("motion-pending");
+    target.classList.add("motion-revealed");
+    revealObserver?.unobserve(target);
+    if (pendingTargets.size === 0) {
+      window.removeEventListener("scroll", scheduleVisibleFallback);
+      window.removeEventListener("resize", scheduleVisibleFallback);
+      document.removeEventListener("focusin", revealFocusedTarget);
+    }
+  };
+  const revealVisiblePending = () => {
+    fallbackFrame = 0;
+    const visibleTargets = [];
+    pendingTargets.forEach((target) => {
+      const bounds = target.getBoundingClientRect();
+      if (bounds.top < window.innerHeight + 96 && bounds.bottom > -96) visibleTargets.push(target);
+    });
+    visibleTargets.forEach(revealTarget);
+  };
+  const scheduleVisibleFallback = () => {
+    if (!pendingTargets.size || fallbackFrame) return;
+    fallbackFrame = window.requestAnimationFrame(revealVisiblePending);
+  };
+  const revealFocusedTarget = (event) => {
+    const target = event.target.closest?.(".motion-pending");
+    if (target) revealTarget(target);
+  };
+
+  try {
+    revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) revealTarget(entry.target);
+      });
+    }, { rootMargin: "0px 0px -5% 0px", threshold: 0.01 });
+  } catch {
+    // Keep all content visible if observer setup is unavailable.
+  }
+
+  if (revealObserver) {
+    document.querySelectorAll(".project-grid, .experience-grid, .community-grid, .stack-window").forEach((group) => {
+      group.querySelectorAll(".project-card, .experience-card, .community-card, .stack-line").forEach((item, index) => {
+        item.style.setProperty("--reveal-delay", `${Math.min(index, 3) * 90}ms`);
+      });
+    });
+    revealTargets.forEach((target) => {
+      target.classList.add("motion-pending");
+      revealObserver.observe(target);
+    });
+    window.addEventListener("scroll", scheduleVisibleFallback, { passive: true });
+    window.addEventListener("resize", scheduleVisibleFallback, { passive: true });
+    document.addEventListener("focusin", revealFocusedTarget);
+    window.requestAnimationFrame(scheduleVisibleFallback);
+    window.setTimeout(scheduleVisibleFallback, 1200);
+  }
+}
+
 const projectGrid = document.querySelector(".project-grid");
 if (projectGrid && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
   let pointerFrame = 0;

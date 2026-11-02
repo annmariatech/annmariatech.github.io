@@ -275,18 +275,6 @@ html::before {
     animation-timeline: scroll(root block);
   }
 }
-@keyframes reveal-on-entry {
-  from { opacity: 0; translate: 0 18px; }
-  to { opacity: 1; translate: 0 0; }
-}
-@supports (animation-timeline: view()) {
-  .section:not(.hero):not(#projects):not(#experience),
-  .github-section, .project-card, .experience-card, .profile-footer {
-    animation: reveal-on-entry linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 28%;
-  }
-}
 .project-card { isolation: isolate; }
 .project-card::before {
   position: absolute;
@@ -306,7 +294,45 @@ html::before {
 }
 @media (prefers-reduced-motion: reduce) {
   html::before { display: none; }
-  .section:not(.hero):not(#projects):not(#experience),
-  .github-section, .project-card, .experience-card, .profile-footer { animation: none !important; opacity: 1; translate: none; }
+  .motion-pending { opacity: 1; transform: none; }
+  .motion-revealed { transition: none; }
   .project-card::before { display: none; }
+}
+
+
+/* Clearer experience bullets, community cards, and skill groups */
+.experience-details { margin: 11px 0 0; padding-left: 19px; color: #716b7e; font-size: .82rem; line-height: 1.65; }
+.experience-details li + li { margin-top: 7px; }
+.experience-details li::marker { color: var(--purple); }
+.community-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.community-card { padding: 17px 19px; border: 1px solid var(--line); border-radius: 12px; background: #ffffffc9; box-shadow: 0 7px 22px #584a700d; }
+.community-card h3 { margin: 6px 0 0; font-size: .95rem; line-height: 1.5; }
+.community-card p { margin: 5px 0 0; color: #716b7e; font-size: .78rem; line-height: 1.7; }
+.community-card .experience-role { color: #8068aa; }
+.stack-line { grid-template-columns: minmax(150px, 190px) 1fr; }
+@media (max-width: 520px) {
+  .community-grid { grid-template-columns: 1fr; }
+  .stack-line { grid-template-columns: 1fr; }
+}
+
+html.theme-dark .experience-details { color: #c9c1d2; }
+html.theme-dark .community-card { border-color: #41394e; background: #24212f; box-shadow: 0 7px 22px #09071140; }
+html.theme-dark .community-card p { color: #c9c1d2; }
+html.theme-dark .community-card .experience-role { color: #d0b9ef; }
+
+
+/* Sequential entrance with a visible-content fallback for native scrolling. */
+.motion-pending { opacity: 0; transform: translateY(18px); }
+.motion-revealed {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .58s ease, transform .58s cubic-bezier(.2,.7,.25,1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.project-card.motion-pending, .experience-card.motion-pending, .community-card.motion-pending { transform: translateY(18px); }
+.project-card.motion-revealed:hover { transform: translateY(-5px) rotate(-.25deg); }
+@media (max-width: 760px) { .motion-pending { transform: translateY(12px); } }
+@media (prefers-reduced-motion: reduce) {
+  .motion-pending { opacity: 1; transform: none !important; }
+  .motion-revealed { transition: none !important; }
 }
